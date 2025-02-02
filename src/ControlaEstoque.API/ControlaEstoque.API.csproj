@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>527b4853-704e-4de8-bf15-5c249be6389f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControlaEstoque.Application\ControlaEstoque.Application.csproj" />
+    <ProjectReference Include="..\ControlaEstoque.Infrastructure\ControlaEstoque.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
