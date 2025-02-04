@@ -28,6 +28,11 @@ namespace ControlaEstoque.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(36)");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -58,7 +63,7 @@ namespace ControlaEstoque.Infrastructure.Migrations
                     b.Property<DateTime>("DateSale")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Observations")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");

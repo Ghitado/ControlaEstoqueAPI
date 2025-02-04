@@ -9,7 +9,8 @@ public class ProductMapper : IMapper<Product, ProductDTO>
         new(
             dto.Name,
             dto.Price,
-            dto.Stock);
+            dto.Stock, 
+            dto.Image);
 
     public ProductDTO MapToDTO(Product entity) =>
         new()
@@ -18,6 +19,7 @@ public class ProductMapper : IMapper<Product, ProductDTO>
             Name = entity.Name,
             Price = entity.Price,
             Stock = entity.Stock,
+            Image = entity.Image
         };
 
     public IEnumerable<ProductDTO> MapToDTOList(IEnumerable<Product> products)
@@ -31,6 +33,7 @@ public class ProductMapper : IMapper<Product, ProductDTO>
             Name = product.Name,
             Price = product.Price,
             Stock = product.Stock,
+            Image = product.Image
         }).ToList();
     }
 }

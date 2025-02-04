@@ -6,7 +6,7 @@ public interface IUnitOfWork
 {
     Task Commit();
     Task Dispose();
-    //IProductRepository ProductRepository { get; }
-    //ISaleRepository SaleRepository { get; }
+    IProductRepository ProductRepository { get; }
+    ISaleRepository SaleRepository { get; }
 }
 

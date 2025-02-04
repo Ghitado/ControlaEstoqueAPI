@@ -23,7 +23,9 @@ namespace ControlaEstoque.Infrastructure.Migrations
                     Name = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Stock = table.Column<short>(type: "smallint", nullable: false)
+                    Stock = table.Column<short>(type: "smallint", nullable: false),
+                    Image = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -40,7 +42,7 @@ namespace ControlaEstoque.Infrastructure.Migrations
                     Buyer = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Paid = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: false),
-                    Observations = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                    Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DateSale = table.Column<DateTime>(type: "datetime", nullable: false)
                 },

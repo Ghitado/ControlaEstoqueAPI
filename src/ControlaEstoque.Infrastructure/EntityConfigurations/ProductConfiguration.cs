@@ -9,22 +9,25 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         builder.ToTable("products");
 
-        builder.HasKey(p => p.Id);
+        builder.HasKey(e => e.Id);
 
-        builder.Property(p => p.Id)
+        builder.Property(e => e.Id)
             .HasColumnType("varchar(36)");
 
-        builder.Property(p => p.Name)
+        builder.Property(e => e.Name)
             .IsRequired()
             .HasMaxLength(200);
 
-        builder.Property(p => p.Price)
+        builder.Property(e => e.Price)
             .IsRequired()
             .HasColumnType("decimal(18,2)");
 
-        builder.Property(p => p.Stock)
+        builder.Property(e => e.Stock)
             .IsRequired()
             .HasColumnType("smallint");
+
+        builder.Property(e => e.Image)
+            .HasMaxLength(500);
     }
 }
 

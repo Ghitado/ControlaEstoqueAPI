@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControlaEstoque.Infrastructure.Migrations
 {
     [DbContext(typeof(ControlaEstoqueDbContext))]
-    [Migration("20250202021557_Initial")]
+    [Migration("20250203225247_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -30,6 +30,11 @@ namespace ControlaEstoque.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(36)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -61,7 +66,7 @@ namespace ControlaEstoque.Infrastructure.Migrations
                     b.Property<DateTime>("DateSale")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Observations")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");

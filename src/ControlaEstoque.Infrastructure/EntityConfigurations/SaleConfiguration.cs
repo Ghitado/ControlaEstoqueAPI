@@ -24,7 +24,7 @@ public class SaleConfiguration : IEntityTypeConfiguration<Sale>
             .HasColumnType("tinyint(1)")
             .HasDefaultValue(0);
 
-        builder.Property(e => e.Observations)
+        builder.Property(e => e.Description)
             .HasMaxLength(500);
 
         builder.Property(e => e.DateSale)

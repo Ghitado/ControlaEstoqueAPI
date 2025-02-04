@@ -1,11 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using MediatR;
 
-namespace ControlaEstoque.Application.DTOs;
-public class ProductDTO
+namespace ControlaEstoque.Application.UseCases.Products.Commands.Create;
+public class CreateProductCommand : IRequest<Guid>
 {
-    public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public ushort Stock { get; set; }
     public string Image { get; set; } = string.Empty;
 }
+
