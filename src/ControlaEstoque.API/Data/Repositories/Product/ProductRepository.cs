@@ -1,5 +1,4 @@
 ﻿using ControlaEstoque.API.Data.Context;
-using ControlaEstoque.API.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControlaEstoque.API.Data.Repositories.Product;
@@ -9,12 +8,12 @@ public class ProductRepository : IProductRepository
     private readonly ControlaEstoqueDbContext _dbContext;
 
     public ProductRepository(ControlaEstoqueDbContext dbContext) => _dbContext = dbContext;
-    
+
     public async Task<Models.Product?> GetById(Guid id)
     {
         return await _dbContext.Products
             .AsNoTracking()
-            .FirstOrDefaultAsync(e => e.Id == id); ; 
+            .FirstOrDefaultAsync(e => e.Id == id); ;
     }
 
     public async Task<IEnumerable<Models.Product>> GetAll()

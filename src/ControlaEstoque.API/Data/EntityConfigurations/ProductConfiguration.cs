@@ -30,4 +30,3 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasMaxLength(500);
     }
 }
-
