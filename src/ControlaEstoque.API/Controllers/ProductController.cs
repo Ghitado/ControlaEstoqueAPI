@@ -1,10 +1,5 @@
-﻿using ControlaEstoque.Application.Interfaces;
-using ControlaEstoque.Application.UseCases.Products.Commands.Create;
-using ControlaEstoque.Application.UseCases.Products.Commands.Delete;
-using ControlaEstoque.Application.UseCases.Products.Commands.Update;
-using ControlaEstoque.Application.UseCases.Products.Queries.GetAll;
-using ControlaEstoque.Application.UseCases.Products.Queries.GetById;
-using MediatR;
+﻿using ControlaEstoque.API.Models.DTOs;
+using ControlaEstoque.API.Services.Product;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControlaEstoque.API.Controllers;
@@ -13,20 +8,17 @@ namespace ControlaEstoque.API.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly IProductService _service;
-    private readonly IMediator _mediator;
 
-    public ProductController(IProductService service, IMediator mediator)
-    {
-        _service = service;
-        _mediator = mediator;
-    }
+    public ProductController(IProductService service) => _service = service;
 
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetById([FromRoute] GetProductByIdQuery id)
+    public async Task<IActionResult> GetById(
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken)
     {
-        var product = await _mediator.Send(id);
+        var product = await _service.GetById(id);
         return product != null ? Ok(product) : NotFound();
     }
 
@@ -35,39 +27,41 @@ public class ProductController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAll()
     {
-        var products = await _mediator.Send(new GetAllProductsQuery());
+        var products = await _service.GetAll();
         return Ok(products);
     }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Add([FromBody] CreateProductCommand command)
+    public async Task<IActionResult> Add(
+        [FromBody] ProductInputDTO productDto,
+        CancellationToken cancellationToken)
     {
-        var productId = await _mediator.Send(command);
-        return Ok(new { ProductId = productId });
+        await _service.Add(productDto);
+        return Ok();
     }
 
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateProduct(
+    public async Task<IActionResult> Update(
         [FromRoute] Guid id, 
-        [FromBody] UpdateProductCommand command)
+        [FromBody] ProductInputDTO productDto,
+        CancellationToken cancellationToken)
     {
-        if (id != command.Id)
-            return BadRequest("O ID do produto na URL não corresponde ao ID no corpo da requisição.");
-
-        var success = await _mediator.Send(command);
-        return success ? NoContent() : NotFound();
+        await _service.Update(id, productDto);
+        return NoContent();
     }
 
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete([FromRoute] DeleteProductCommand id)
+    public async Task<IActionResult> Delete(
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken)
     {
-        var success = await _mediator.Send(id);
-        return success ? NoContent() : NotFound();
+        await _service.Delete(id);
+        return NoContent();
     }
 }
