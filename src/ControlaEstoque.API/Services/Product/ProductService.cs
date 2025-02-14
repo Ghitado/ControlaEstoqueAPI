@@ -1,7 +1,6 @@
-﻿using ControlaEstoque.API.Data.Repositories.Product;
-using ControlaEstoque.API.Models.DTOs;
+﻿using ControlaEstoque.API.Models.DTOs;
+using ControlaEstoque.API.Repositories.Product;
 using Mapster;
-using Microsoft.EntityFrameworkCore;
 
 namespace ControlaEstoque.API.Services.Product;
 

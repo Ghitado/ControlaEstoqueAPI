@@ -1,7 +1,6 @@
-﻿using ControlaEstoque.API.Data.Repositories.Product;
-using ControlaEstoque.API.Data.Repositories.Sale;
-using ControlaEstoque.API.Models;
-using ControlaEstoque.API.Models.DTOs;
+﻿using ControlaEstoque.API.Models.DTOs;
+using ControlaEstoque.API.Repositories.Product;
+using ControlaEstoque.API.Repositories.Sale;
 using Mapster;
 
 namespace ControlaEstoque.API.Services.Sale;
@@ -106,6 +105,10 @@ public class SaleService : ISaleService
         foreach (var item in itemsToRemove)
         {
             var product = await _productRepository.GetById(item.ProductId);
+
+            if (product is null)
+                continue;
+
             product.IncreaseStock(item.Quantity);
             saleExist.RemoveItem(item);
             await _productRepository.Update(product);

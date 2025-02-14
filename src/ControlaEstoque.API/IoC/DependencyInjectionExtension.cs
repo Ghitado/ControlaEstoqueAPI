@@ -1,6 +1,6 @@
 ﻿using ControlaEstoque.API.Data.Context;
-using ControlaEstoque.API.Data.Repositories.Product;
-using ControlaEstoque.API.Data.Repositories.Sale;
+using ControlaEstoque.API.Repositories.Product;
+using ControlaEstoque.API.Repositories.Sale;
 using ControlaEstoque.API.Services.Product;
 using ControlaEstoque.API.Services.Sale;
 using ControlaEstoque.Infrastructure.Extensions;
