@@ -1,4 +1,4 @@
-﻿namespace ControlaEstoque.API.Data.Repositories.Product;
+﻿namespace ControlaEstoque.API.Repositories.Product;
 
 public interface IProductRepository
 {

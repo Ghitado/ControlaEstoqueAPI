@@ -1,7 +1,7 @@
 ﻿using ControlaEstoque.API.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace ControlaEstoque.API.Data.Repositories.Product;
+namespace ControlaEstoque.API.Repositories.Product;
 
 public class ProductRepository : IProductRepository
 {

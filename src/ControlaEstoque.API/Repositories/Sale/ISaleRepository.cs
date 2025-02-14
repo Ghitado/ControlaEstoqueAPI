@@ -1,4 +1,4 @@
-﻿namespace ControlaEstoque.API.Data.Repositories.Sale;
+﻿namespace ControlaEstoque.API.Repositories.Sale;
 
 public interface ISaleRepository
 {

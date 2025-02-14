@@ -1,8 +1,7 @@
-﻿
-using ControlaEstoque.API.Data.Context;
+﻿using ControlaEstoque.API.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace ControlaEstoque.API.Data.Repositories.Sale;
+namespace ControlaEstoque.API.Repositories.Sale;
 
 public class SaleRepository : ISaleRepository
 {
