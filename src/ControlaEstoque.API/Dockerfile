@@ -1,33 +1,30 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-WORKDIR /src
-COPY ["./src/ControlaEstoque.API/ControlaEstoque.API.csproj", "./ControlaEstoque.API/"]
-
-RUN dotnet restore "./ControlaEstoque.API/ControlaEstoque.API.csproj"
-
-COPY ./src/ .
-
-WORKDIR "/src/ControlaEstoque.API"
-
-RUN dotnet build "./ControlaEstoque.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-RUN dotnet tool install --global dotnet-ef --version 8.0.12
-
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-
-RUN dotnet publish "./ControlaEstoque.API.csproj" \
-	-c $BUILD_CONFIGURATION \
-	-o /app/publish /p:UseAppHost=false
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
-
+# This stage is used when running from VS in fast mode (Default for Debug configuration)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER $APP_UID
+WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-USER app
-WORKDIR /app
 
+# This stage is used to build the service project
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["src/ControlaEstoque.API/ControlaEstoque.API.csproj", "src/ControlaEstoque.API/"]
+RUN dotnet restore "./src/ControlaEstoque.API/ControlaEstoque.API.csproj"
+COPY . .
+WORKDIR "/src/src/ControlaEstoque.API"
+RUN dotnet build "./ControlaEstoque.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# This stage is used to publish the service project to be copied to the final stage
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./ControlaEstoque.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
+FROM base AS final
+WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ControlaEstoque.API.dll"]

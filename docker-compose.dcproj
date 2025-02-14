@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>783f4a9b-2e81-48cb-b55d-9f4c295574fe</ProjectGuid>
+    <ProjectGuid>6d2ffdf8-1051-42cb-ad06-d3bef0eb69b9</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>controlaestoque.api</DockerServiceName>
