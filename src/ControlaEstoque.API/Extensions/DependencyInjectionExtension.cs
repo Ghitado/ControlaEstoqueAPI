@@ -35,9 +35,10 @@ public static class DependencyInjectionExtension
         {
             options.UseMySql(
                 connectionString,
-                serverVersion/*, 
-                b => b.MigrationsAssembly(typeof(ControlaEstoqueDbContext).Assembly.FullName)*/);
+                serverVersion,
+                b => b.MigrationsAssembly(typeof(ControlaEstoqueDbContext).Assembly.FullName));
         });
+            
     }
 
     private static void AddServices(IServiceCollection services)
