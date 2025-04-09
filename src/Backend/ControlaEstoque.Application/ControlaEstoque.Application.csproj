@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\ControlaEstoque.Communication\ControlaEstoque.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\ControlaEstoque.Exception\ControlaEstoque.Exception.csproj" />
+    <ProjectReference Include="..\ControlaEstoque.Domain\ControlaEstoque.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\User\Delete\" />
+    <Folder Include="UseCases\User\ChangePassword\" />
+    <Folder Include="UseCases\User\Profile\" />
+    <Folder Include="UseCases\User\Update\" />
+    <Folder Include="UseCases\User\Register\" />
+  </ItemGroup>
+
+</Project>
