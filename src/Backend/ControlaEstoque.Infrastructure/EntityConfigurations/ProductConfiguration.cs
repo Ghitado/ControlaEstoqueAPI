@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using ControlaEstoque.API.Models;
+using ControlaEstoque.Domain.Entities;
 
-namespace ControlaEstoque.API.Data.EntityConfigurations;
-public class ProductConfiguration : IEntityTypeConfiguration<Product>
+namespace ControlaEstoque.Infrastructure.DataAccess.EntityConfigurations;
+public sealed class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> builder)
     {
@@ -27,6 +27,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasColumnType("smallint");
 
         builder.Property(e => e.Image)
-            .HasMaxLength(500);
+            .HasMaxLength(500)
+            .IsRequired(false);
     }
 }

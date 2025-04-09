@@ -1,9 +1,9 @@
-﻿using ControlaEstoque.API.Models;
+﻿using ControlaEstoque.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace ControlaEstoque.API.Data.EntityConfigurations;
-public class SaleConfiguration : IEntityTypeConfiguration<Sale>
+namespace ControlaEstoque.Infrastructure.DataAccess.EntityConfigurations;
+public sealed class SaleConfiguration : IEntityTypeConfiguration<Sale>
 {
     public void Configure(EntityTypeBuilder<Sale> builder)
     {

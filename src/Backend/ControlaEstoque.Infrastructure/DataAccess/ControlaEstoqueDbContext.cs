@@ -1,10 +1,11 @@
-﻿using ControlaEstoque.API.Models;
+﻿using ControlaEstoque.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ControlaEstoque.API.Data.Context;
+namespace ControlaEstoque.Infrastructure.DataAccess;
 
 public class ControlaEstoqueDbContext : DbContext
 {
+    public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Sale> SaleItems { get; set; }
     public DbSet<Sale> Sales { get; set; }

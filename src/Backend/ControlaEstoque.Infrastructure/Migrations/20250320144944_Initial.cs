@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ControlaEstoque.API.Migrations
+namespace ControlaEstoque.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -24,7 +24,7 @@ namespace ControlaEstoque.API.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Stock = table.Column<short>(type: "smallint", nullable: false),
-                    Image = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                    Image = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -49,6 +49,25 @@ namespace ControlaEstoque.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_sales", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Active = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Password = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -99,6 +118,9 @@ namespace ControlaEstoque.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "sale_items");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "products");

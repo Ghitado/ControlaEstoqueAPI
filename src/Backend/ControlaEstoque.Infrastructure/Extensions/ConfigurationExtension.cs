@@ -1,4 +1,6 @@
-﻿namespace ControlaEstoque.Infrastructure.Extensions;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace ControlaEstoque.Infrastructure.Extensions;
 public static class ConfigurationExtension
 {
     public static string ConnectionString(this IConfiguration configuration)
