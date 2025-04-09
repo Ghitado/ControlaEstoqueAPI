@@ -3,9 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.API", "src\ControlaEstoque.API\ControlaEstoque.API.csproj", "{DB9E7557-D9F7-46B5-9D5D-1CD3C1FFC31A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Communication", "src\Shared\ControlaEstoque.Communication\ControlaEstoque.Communication.csproj", "{3007054C-12A8-4976-89FC-06C498803D5D}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6D2FFDF8-1051-42CB-AD06-D3BEF0EB69B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Application", "src\Backend\ControlaEstoque.Application\ControlaEstoque.Application.csproj", "{15FA85B0-EE55-5537-25BE-724FA8638445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Domain", "src\Backend\ControlaEstoque.Domain\ControlaEstoque.Domain.csproj", "{9E17032E-C354-169C-F92E-DDAC5F16EC61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Infrastructure", "src\Backend\ControlaEstoque.Infrastructure\ControlaEstoque.Infrastructure.csproj", "{86269D86-E35F-7918-F13A-FAC5277C3495}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E1C55171-B536-4BC0-B6C9-408B5EBB0284}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E226034B-E725-4677-8A20-7A6FA6C98BE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9EE98BF8-3000-44C4-B57B-6A9A9A2B2756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Api", "src\Backend\ControlaEstoque.Api\ControlaEstoque.Api.csproj", "{18208E15-C706-4D4A-AE00-52D7EF6A6BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlaEstoque.Exception", "src\Shared\ControlaEstoque.Exception\ControlaEstoque.Exception.csproj", "{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +29,43 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB9E7557-D9F7-46B5-9D5D-1CD3C1FFC31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB9E7557-D9F7-46B5-9D5D-1CD3C1FFC31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB9E7557-D9F7-46B5-9D5D-1CD3C1FFC31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB9E7557-D9F7-46B5-9D5D-1CD3C1FFC31A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D2FFDF8-1051-42CB-AD06-D3BEF0EB69B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D2FFDF8-1051-42CB-AD06-D3BEF0EB69B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D2FFDF8-1051-42CB-AD06-D3BEF0EB69B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D2FFDF8-1051-42CB-AD06-D3BEF0EB69B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3007054C-12A8-4976-89FC-06C498803D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3007054C-12A8-4976-89FC-06C498803D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3007054C-12A8-4976-89FC-06C498803D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3007054C-12A8-4976-89FC-06C498803D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FA85B0-EE55-5537-25BE-724FA8638445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FA85B0-EE55-5537-25BE-724FA8638445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FA85B0-EE55-5537-25BE-724FA8638445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FA85B0-EE55-5537-25BE-724FA8638445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E17032E-C354-169C-F92E-DDAC5F16EC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E17032E-C354-169C-F92E-DDAC5F16EC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E17032E-C354-169C-F92E-DDAC5F16EC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E17032E-C354-169C-F92E-DDAC5F16EC61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86269D86-E35F-7918-F13A-FAC5277C3495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86269D86-E35F-7918-F13A-FAC5277C3495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86269D86-E35F-7918-F13A-FAC5277C3495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86269D86-E35F-7918-F13A-FAC5277C3495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18208E15-C706-4D4A-AE00-52D7EF6A6BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18208E15-C706-4D4A-AE00-52D7EF6A6BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18208E15-C706-4D4A-AE00-52D7EF6A6BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18208E15-C706-4D4A-AE00-52D7EF6A6BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3007054C-12A8-4976-89FC-06C498803D5D} = {E226034B-E725-4677-8A20-7A6FA6C98BE0}
+		{15FA85B0-EE55-5537-25BE-724FA8638445} = {E1C55171-B536-4BC0-B6C9-408B5EBB0284}
+		{9E17032E-C354-169C-F92E-DDAC5F16EC61} = {E1C55171-B536-4BC0-B6C9-408B5EBB0284}
+		{86269D86-E35F-7918-F13A-FAC5277C3495} = {E1C55171-B536-4BC0-B6C9-408B5EBB0284}
+		{E1C55171-B536-4BC0-B6C9-408B5EBB0284} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E226034B-E725-4677-8A20-7A6FA6C98BE0} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{18208E15-C706-4D4A-AE00-52D7EF6A6BBD} = {E1C55171-B536-4BC0-B6C9-408B5EBB0284}
+		{F7258E0B-A0F1-4C35-BAAB-C2EDCD3EFC30} = {E226034B-E725-4677-8A20-7A6FA6C98BE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C43A3DCA-B194-4900-A5B4-8FE3BE284A65}

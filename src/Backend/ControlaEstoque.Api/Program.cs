@@ -1,12 +1,16 @@
-using ControlaEstoque.API.Extensions;
-using ControlaEstoque.API.IoC;
-using System.Net;
+using ControlaEstoque.Infrastructure;
+using ControlaEstoque.Application;
+using ControlaEstoque.Api.Extensions;
+using ControlaEstoque.Api.Middleware;
+using ControlaEstoque.Api.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
@@ -28,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
