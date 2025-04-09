@@ -1,4 +1,5 @@
-﻿namespace ControlaEstoque.API.Models;
+﻿namespace ControlaEstoque.Domain.Entities;
+
 public sealed class Sale : Entity
 {
     public string Buyer { get; private set; } = string.Empty;
@@ -17,11 +18,8 @@ public sealed class Sale : Entity
         Description = description;
     }
 
-    public void AddItem(Guid productId, decimal unitPrice, ushort quantity)
+    public void AddItem(Guid productId, decimal unitPrice, int quantity)
     {
-        if (quantity == 0)
-            throw new InvalidOperationException("Quantity must be greater than zero.");
-
         var saleItem = new SaleItem(this.Id, productId, unitPrice, quantity);
         Items.Add(saleItem);
     }
